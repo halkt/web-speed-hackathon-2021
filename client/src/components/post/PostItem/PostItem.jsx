@@ -13,7 +13,7 @@ import { SoundArea } from '../../post/SoundArea';
  */
 
 /** @type {React.VFC<Props>} */
-const PostItem = ({ post }) => {
+const PostItem = ({ post, lazy = true }) => {
   return (
     <article className="px-1 sm:px-4">
       <div className="pb-4 pt-4 px-4 border-b border-gray-300">
@@ -23,7 +23,7 @@ const PostItem = ({ post }) => {
               className="block w-14 h-14 bg-gray-300 border border-gray-300 rounded-full hover:opacity-95 overflow-hidden sm:w-16 sm:h-16"
               to={`/users/${post.user.username}`}
             >
-              <img alt={post.user.profileImage.alt} src={getProfileImagePath(post.user.profileImage.id)} />
+              <img alt={post.user.profileImage.alt} src={getProfileImagePath(post.user.profileImage.id)} loading={ lazy ? 'lazy' : 'eager' } />
             </Link>
           </div>
           <div className="flex-grow flex-shrink min-w-0 whitespace-nowrap overflow-hidden overflow-ellipsis">
@@ -43,7 +43,7 @@ const PostItem = ({ post }) => {
           <p className="text-gray-800 text-xl leading-relaxed">{post.text}</p>
           {post.images?.length > 0 ? (
             <div className="relative mt-2 w-full">
-              <ImageArea images={post.images} />
+              <ImageArea images={post.images} lazy={lazy} />
             </div>
           ) : null}
           {post.movie ? (

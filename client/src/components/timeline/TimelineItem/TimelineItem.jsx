@@ -32,7 +32,8 @@ const isClickedAnchorOrButton = (target, currentTarget) => {
  */
 
 /** @type {React.VFC<Props>} */
-const TimelineItem = ({ post }) => {
+const TimelineItem = ({ post, postIndex }) => {
+  const lazy = postIndex > 2 ? true : false;
   const navigate = useNavigate();
 
   /**
@@ -57,7 +58,11 @@ const TimelineItem = ({ post }) => {
             className="block w-12 h-12 bg-gray-300 border border-gray-300 rounded-full hover:opacity-75 overflow-hidden sm:w-16 sm:h-16"
             to={`/users/${post.user.username}`}
           >
-            <img alt={post.user.profileImage.alt} src={getProfileImagePath(post.user.profileImage.id)} />
+            <img
+              alt={post.user.profileImage.alt}
+              src={getProfileImagePath(post.user.profileImage.id)}
+              loading={ lazy ? 'lazy' : 'eager' }
+            />
           </Link>
         </div>
         <div className="flex-grow flex-shrink min-w-0">
@@ -78,7 +83,7 @@ const TimelineItem = ({ post }) => {
           <p className="text-gray-800 leading-relaxed">{post.text}</p>
           {post.images?.length > 0 ? (
             <div className="relative mt-2 w-full">
-              <ImageArea images={post.images} />
+              <ImageArea images={post.images} lazy={lazy} />
             </div>
           ) : null}
           {post.movie ? (
