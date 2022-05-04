@@ -24,7 +24,7 @@ const config = {
   entry: {
     main: [
       'core-js',
-      'regenerator-runtime/runtime',,
+      'regenerator-runtime/runtime',
       path.resolve(SRC_PATH, './index.css'),
       path.resolve(SRC_PATH, './buildinfo.js'),
       path.resolve(SRC_PATH, './index.jsx'),
