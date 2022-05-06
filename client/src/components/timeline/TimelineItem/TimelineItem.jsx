@@ -1,8 +1,8 @@
-import moment from 'moment';
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 import { getProfileImagePath } from '../../../utils/get_path';
+import { formatDate } from '../../../utils/date';
 import { ImageArea } from '../../post/ImageArea';
 import { MovieArea } from '../../post/MovieArea';
 import { SoundArea } from '../../post/SoundArea';
@@ -75,8 +75,8 @@ const TimelineItem = ({ post, postIndex }) => {
             </Link>
             <span className="pr-1 text-gray-500">-</span>
             <Link className="pr-1 text-gray-500 hover:underline" to={`/posts/${post.id}`}>
-              <time dateTime={moment(post.createdAt).toISOString()}>
-                {moment(post.createdAt).locale('ja').format('LL')}
+              <time dateTime={(post.createdAt)}>
+                {format(post.createdAt)}
               </time>
             </Link>
           </p>
