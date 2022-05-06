@@ -1,4 +1,3 @@
-import moment from 'moment';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -6,6 +5,7 @@ import { getProfileImagePath } from '../../../utils/get_path';
 import { ImageArea } from '../../post/ImageArea';
 import { MovieArea } from '../../post/MovieArea';
 import { SoundArea } from '../../post/SoundArea';
+import { formatDate } from '../../../utils/date';
 
 /**
  * @typedef {object} Props
@@ -58,8 +58,8 @@ const PostItem = ({ post, lazy = true }) => {
           ) : null}
           <p className="mt-2 text-sm sm:mt-4">
             <Link className="text-gray-500 hover:underline" to={`/posts/${post.id}`}>
-              <time dateTime={moment(post.createdAt).toISOString()}>
-                {moment(post.createdAt).locale('ja').format('LL')}
+              <time dateTime={(post.createdAt)}>
+                {format(post.createdAt)}
               </time>
             </Link>
           </p>
