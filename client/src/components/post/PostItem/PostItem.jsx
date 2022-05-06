@@ -59,7 +59,7 @@ const PostItem = ({ post, lazy = true }) => {
           <p className="mt-2 text-sm sm:mt-4">
             <Link className="text-gray-500 hover:underline" to={`/posts/${post.id}`}>
               <time dateTime={(post.createdAt)}>
-                {format(post.createdAt)}
+                {formatDate(post.createdAt)}
               </time>
             </Link>
           </p>
