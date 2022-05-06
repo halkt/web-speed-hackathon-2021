@@ -76,7 +76,7 @@ const TimelineItem = ({ post, postIndex }) => {
             <span className="pr-1 text-gray-500">-</span>
             <Link className="pr-1 text-gray-500 hover:underline" to={`/posts/${post.id}`}>
               <time dateTime={(post.createdAt)}>
-                {format(post.createdAt)}
+                {formatDate(post.createdAt)}
               </time>
             </Link>
           </p>
