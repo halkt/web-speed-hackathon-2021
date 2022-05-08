@@ -10,7 +10,8 @@
     "start": "babel-node --experimental-wasm-threads src/index.js",
     "prestart:clean": "rimraf ../upload",
     "prestart:init": "mkdirp ../upload/images ../upload/movies ../upload/sounds",
-    "convert:img": "babel-node convert_jpg_to_avif.js"
+    "convert:img": "babel-node convert_jpg_to_avif.js",
+    "convert:movie": "babel-node --experimental-wasm-threads convert_gif_to_webm.js"
   },
   "dependencies": {
     "@babel/core": "7.16.0",
