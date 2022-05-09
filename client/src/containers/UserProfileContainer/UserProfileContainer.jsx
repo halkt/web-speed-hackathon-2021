@@ -1,7 +1,7 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
 import { useParams } from 'react-router-dom';
 
+import { Title } from '../../components/head/Title';
 import { InfiniteScroll } from '../../components/foundation/InfiniteScroll';
 import { UserProfilePage } from '../../components/user_profile/UserProfilePage';
 import { useFetch } from '../../hooks/use_fetch';
@@ -18,9 +18,7 @@ const UserProfileContainer = () => {
 
   if (isLoadingUser) {
     return (
-      <Helmet>
-        <title>読込中 - CAwitter</title>
-      </Helmet>
+      <Title title="読込中 - CAwitter" />
     );
   }
 
@@ -30,9 +28,7 @@ const UserProfileContainer = () => {
 
   return (
     <InfiniteScroll fetchMore={fetchMore} items={posts}>
-      <Helmet>
-        <title>{user.name} さんのタイムライン - CAwitter</title>
-      </Helmet>
+      <Title title={`${user.name} さんのタイムライン - CAwitter`} />
       <UserProfilePage timeline={posts} user={user} />
     </InfiniteScroll>
   );

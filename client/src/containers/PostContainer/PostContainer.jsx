@@ -1,7 +1,7 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
 import { useParams } from 'react-router-dom';
 
+import { Title } from '../../components/head/Title';
 import { InfiniteScroll } from '../../components/foundation/InfiniteScroll';
 import { PostPage } from '../../components/post/PostPage';
 import { useFetch } from '../../hooks/use_fetch';
@@ -19,9 +19,7 @@ const PostContainer = () => {
 
   if (isLoadingPost) {
     return (
-      <Helmet>
-        <title>読込中 - CAwitter</title>
-      </Helmet>
+      <Title title="読込中 - CAwitte" />
     );
   }
 
@@ -31,9 +29,7 @@ const PostContainer = () => {
 
   return (
     <InfiniteScroll fetchMore={fetchMore} items={comments}>
-      <Helmet>
-        <title>{post.user.name} さんのつぶやき - CAwitter</title>
-      </Helmet>
+      <Title title={`${post.user.name} さんのつぶやき - CAwitter`} />
       <PostPage comments={comments} post={post} />
     </InfiniteScroll>
   );

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
+import { Title } from '../../components/head/Title';
 
 import { NotFoundPage } from '../../components/application/NotFoundPage';
 
@@ -7,9 +7,7 @@ import { NotFoundPage } from '../../components/application/NotFoundPage';
 const NotFoundContainer = () => {
   return (
     <>
-      <Helmet>
-        <title>ページが見つかりません - CAwitter</title>
-      </Helmet>
+      <Title title="ページが見つかりません - CAwitter" />
       <NotFoundPage />
     </>
   );
