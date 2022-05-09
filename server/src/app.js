@@ -4,6 +4,7 @@ import session from 'express-session';
 
 import { apiRouter } from './routes/api';
 import { staticRouter } from './routes/static';
+import { compressionRouter } from './routes/compression';
 
 const app = Express();
 
@@ -29,6 +30,7 @@ app.use((_req, res, next) => {
 });
 
 app.use('/api/v1', apiRouter);
+app.use(compressionRouter);
 app.use(staticRouter);
 
 export { app };
