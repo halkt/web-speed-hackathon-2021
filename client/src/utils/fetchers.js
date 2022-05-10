@@ -1,5 +1,3 @@
-import { gzip } from 'pako';
-
 const createFetchError = res =>
   new Error(`Failed to fetch(${res.status}): ${res.statusText}`)
 
@@ -51,14 +49,11 @@ async function sendFile(url, file) {
  */
 async function sendJSON(url, data) {
   const jsonString = JSON.stringify(data);
-  const uint8Array = new TextEncoder().encode(jsonString);
-  const compressed = gzip(uint8Array);
 
   const response = await fetch(url, {
     method: 'POST',
-    body: compressed,
+    body: jsonString,
     headers: {
-      'Content-Encoding': 'gzip',
       'Content-Type': 'application/json',
     },
   });
